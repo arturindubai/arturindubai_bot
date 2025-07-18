@@ -58,15 +58,6 @@ kb_budget_estate = ReplyKeyboardMarkup(
     resize_keyboard=True, one_time_keyboard=True
 )
 
-# 4) Timeframe
-kb_timeframe = ReplyKeyboardMarkup(
-    keyboard=[
-        [KeyboardButton(text="1–3 мес"), KeyboardButton(text="3–6 мес")],
-        [KeyboardButton(text="6–12 мес"), KeyboardButton(text="> 12 мес")],
-    ],
-    resize_keyboard=True, one_time_keyboard=True
-)
-
 # 5) Payment method
 kb_pay = ReplyKeyboardMarkup(
     keyboard=[
@@ -180,16 +171,65 @@ main_menu = ReplyKeyboardMarkup(
     ],
     resize_keyboard=True
 )
-# ---------- выбор после нажатия "🏢 Бизнес" ----------
-kb_business_choice = ReplyKeyboardMarkup(
-    keyboard=[[KeyboardButton(text="💬 Консультация"),
-               KeyboardButton(text="💰 Узнать стоимость")]],
+# ---------- Главное меню ----------
+main_menu = ReplyKeyboardMarkup(
+    keyboard=[
+        [KeyboardButton(text="🏠 Недвижимость"),
+         KeyboardButton(text="🏢 Бизнес + Калькулятор")],
+        [KeyboardButton(text="🗓 Консультация"),
+         KeyboardButton(text="🎬 Полезная кнопка")],
+    ],
+    resize_keyboard=True
+)
+
+# ---------- Превью Недвижимость ----------
+kb_estate_intro = ReplyKeyboardMarkup(
+    keyboard=[
+        [KeyboardButton(text="▶️ Начать квиз")],
+        [KeyboardButton(text="🔙 Назад в меню")],
+    ],
     resize_keyboard=True, one_time_keyboard=True
 )
 
-# ---------- выбор после нажатия "🏠 Недвижимость" ----------
-kb_estate_choice = ReplyKeyboardMarkup(
-    keyboard=[[KeyboardButton(text="▶️ Начать квиз"),
-               KeyboardButton(text="🗓 Консультация")]],
+# ---------- Превью Бизнес ----------
+kb_biz_intro = ReplyKeyboardMarkup(
+    keyboard=[
+        [KeyboardButton(text="▶️ Начать квиз")],
+        [KeyboardButton(text="🔙 Назад в меню")],
+    ],
     resize_keyboard=True, one_time_keyboard=True
 )
+
+# ---------- YouTube ссылки ----------
+kb_youtube = InlineKeyboardMarkup(inline_keyboard=[
+    [InlineKeyboardButton(text="Про недвижимость в ОАЭ", url="https://www.youtube.com/playlist?list=PLdl9NebR1ktzSVbT659Tisb9WD_3CClrp")],
+    [InlineKeyboardButton(text="Про бизнес в ОАЭ",     url="https://www.youtube.com/playlist?list=PLdl9NebR1ktxv7eLtunkEjAClL2-3xefi")],
+    [InlineKeyboardButton(text="Типы недвижимости",    url="https://www.youtube.com/playlist?list=PLdl9NebR1ktzD9QNYZ3WFRQkhSwFsPm6O")],
+    [InlineKeyboardButton(text="Термины недвижимости", url="https://www.youtube.com/playlist?list=PLdl9NebR1ktwJjyuh9QZ0LhLu1cHJfXZ0")],
+])
+from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+
+# ---------- Превью Недвижимость (inline) ----------
+kb_estate_intro_inline = InlineKeyboardMarkup(inline_keyboard=[
+    [InlineKeyboardButton(text="▶️ Начать", callback_data="start_estate")],
+    [InlineKeyboardButton(text="🔙 Назад в меню", callback_data="back_main")],
+])
+
+# ---------- Превью Бизнес (inline) ----------
+kb_biz_intro_inline = InlineKeyboardMarkup(inline_keyboard=[
+    [InlineKeyboardButton(text="▶️ Начать", callback_data="start_biz")],
+    [InlineKeyboardButton(text="🔙 Назад в меню", callback_data="back_main")],
+])
+# ---------- Когда планируете? ----------
+kb_plan_time = ReplyKeyboardMarkup(
+    keyboard=[
+        [KeyboardButton(text="В этом месяце"), KeyboardButton(text="1-3 месяца")],
+        [KeyboardButton(text="3-6 месяцев"),   KeyboardButton(text="Пока не решил")],
+    ],
+    resize_keyboard=True, one_time_keyboard=True
+)
+# ---------- Превью Недвижимость (inline) ----------
+kb_estate_intro_inline = InlineKeyboardMarkup(inline_keyboard=[
+    [InlineKeyboardButton(text="▶️ Начать", callback_data="start_estate")],
+    [InlineKeyboardButton(text="🔙 Назад в меню", callback_data="back_main")],
+])
