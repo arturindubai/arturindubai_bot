@@ -81,11 +81,7 @@ kb_visas = InlineKeyboardMarkup(inline_keyboard=[
     [InlineKeyboardButton(text=str(n), callback_data=f"vis_{n}") for n in range(0,6)],
     [InlineKeyboardButton(text=str(n), callback_data=f"vis_{n}") for n in range(6,11)],
 ])
-# inline-меню с гайдами
-guides_inline_kb = InlineKeyboardMarkup(inline_keyboard=[
-    [InlineKeyboardButton(text="📘 Инвест-гайд 2025", callback_data="guide_2025")],
-    [InlineKeyboardButton(text="⚠️ 13 ошибок бизнеса", callback_data="guide_errors")],
-])
+
 # --- популярные ниши бизнеса (10) ---
 kb_niche = ReplyKeyboardMarkup(
     keyboard=[
@@ -116,6 +112,11 @@ kb_locations = ReplyKeyboardMarkup(
 )
 
 # Клавиатура бюджетов недвижимости
+kb_estate_choice = ReplyKeyboardMarkup(
+    keyboard=[[KeyboardButton(text="🗓 Консультация"),
+               KeyboardButton(text="▶️ Начать квиз")]],
+    resize_keyboard=True, one_time_keyboard=True
+)
 kb_budget_estate = ReplyKeyboardMarkup(
     keyboard=[
         [KeyboardButton(text="до 500k AED"), KeyboardButton(text="500k – 1 M")],
@@ -154,4 +155,41 @@ kb_freezones = ReplyKeyboardMarkup(
     ],
     resize_keyboard=True,
     one_time_keyboard=True
+)
+# ─── Период запуска/инвестиций ───
+kb_plan_time = ReplyKeyboardMarkup(
+    keyboard=[
+        [KeyboardButton(text="В этом месяце"), KeyboardButton(text="1-3 месяца")],
+        [KeyboardButton(text="3-6 месяцев"),   KeyboardButton(text="Пока не решил")],
+    ],
+    resize_keyboard=True, one_time_keyboard=True
+)
+
+# ─── Меню выбора в «Бизнес» ───
+kb_business_choice = ReplyKeyboardMarkup(
+    keyboard=[[KeyboardButton(text="💬 Консультация"),
+               KeyboardButton(text="💰 Узнать стоимость")]],
+    resize_keyboard=True, one_time_keyboard=True
+)
+
+# ─── Главное меню (без «Гайды») ───
+main_menu = ReplyKeyboardMarkup(
+    keyboard=[
+        [KeyboardButton(text="🏠 Недвижимость"), KeyboardButton(text="🏢 Бизнес")],
+        [KeyboardButton(text="💰 Калькулятор"),  KeyboardButton(text="🗓 30-мин консультация")],
+    ],
+    resize_keyboard=True
+)
+# ---------- выбор после нажатия "🏢 Бизнес" ----------
+kb_business_choice = ReplyKeyboardMarkup(
+    keyboard=[[KeyboardButton(text="💬 Консультация"),
+               KeyboardButton(text="💰 Узнать стоимость")]],
+    resize_keyboard=True, one_time_keyboard=True
+)
+
+# ---------- выбор после нажатия "🏠 Недвижимость" ----------
+kb_estate_choice = ReplyKeyboardMarkup(
+    keyboard=[[KeyboardButton(text="▶️ Начать квиз"),
+               KeyboardButton(text="🗓 Консультация")]],
+    resize_keyboard=True, one_time_keyboard=True
 )

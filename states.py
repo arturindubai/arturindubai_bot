@@ -1,27 +1,29 @@
+# states.py  ─── единственный источник состояний FSM
 from aiogram.fsm.state import StatesGroup, State
 
-# -------- Недвижимость --------
 class EstateForm(StatesGroup):
     budget     = State()
     location   = State()
-    timeframe  = State()
+    plan_time  = State()      # Когда планирует инвестировать?
+    name       = State()      # Имя клиента
     email      = State()
     phone      = State()
 
-# -------- Бизнес --------
 class BizForm(StatesGroup):
-    company_type = State()   # Free Zone / Mainland
     niche        = State()
-    residents    = State()   # учредители-резиденты?
-    visas        = State()   # inline 0-10
+    company_type = State()
+    freezone     = State()
+    residents    = State()
+    visas        = State()
     office       = State()
-    freezone  = State()   # ← ОБЯЗАТЕЛЕН
-    corp_account = State()
+    bank         = State()
+    plan_time    = State()
+    name         = State()    # Имя клиента
     email        = State()
     phone        = State()
 
 class ConsultForm(StatesGroup):
-    topic   = State()   # Недвижимость / Бизнес / ВНЖ
-    name    = State()
-    email   = State()
-    phone   = State()
+    topic  = State()
+    name   = State()
+    email  = State()
+    phone  = State()
